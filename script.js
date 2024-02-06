@@ -48,21 +48,21 @@ form.addEventListener("submit", (e) => {
   const year = e.target[2].valueAsNumber;
 
   if (day < 1 || day > 31) {
-    document.getElementById("day-error").classList.toggle("error--invalid");
-    document.getElementById("label-day").classList.toggle("label--invalid");
-    document.getElementById("day").classList.toggle("input--invalid");
+    document.getElementById("day-error").classList.add("error--invalid");
+    document.getElementById("label-day").classList.add("label--invalid");
+    document.getElementById("day").classList.add("input--invalid");
     allValid = false;
   }
   if (month < 1 || month > 12) {
-    document.getElementById("month-error").classList.toggle("error--invalid");
-    document.getElementById("label-month").classList.toggle("label--invalid");
-    document.getElementById("month").classList.toggle("input--invalid");
+    document.getElementById("month-error").classList.add("error--invalid");
+    document.getElementById("label-month").classList.add("label--invalid");
+    document.getElementById("month").classList.add("input--invalid");
     allValid = false;
   }
-  if (year > 2024 || year < 1) {
-    document.getElementById("year-error").classList.toggle("error--invalid");
-    document.getElementById("label-year").classList.toggle("label--invalid");
-    document.getElementById("year").classList.toggle("input--invalid");
+  if (year > 2024 || year < 1000) {
+    document.getElementById("year-error").classList.add("error--invalid");
+    document.getElementById("label-year").classList.add("label--invalid");
+    document.getElementById("year").classList.add("input--invalid");
     allValid = false;
   }
 
@@ -75,16 +75,30 @@ form.addEventListener("submit", (e) => {
       document.getElementById("span--days").innerText = days;
       document.getElementById("span--months").innerText = months;
       document.getElementById("span--year").innerText = years;
+
+      document.getElementById("day-error").classList.remove("error--invalid");
+      document.getElementById("day").classList.remove("input--invalid");
+      document.getElementById("month-error").classList.remove("error--invalid");
+      document.getElementById("month").classList.remove("input--invalid");
+      document.getElementById("year-error").classList.remove("error--invalid");
+      document.getElementById("year").classList.remove("input--invalid");
+      document.getElementById("label-day").classList.remove("label--invalid");
+      document.getElementById("label-month").classList.remove("label--invalid");
+      document.getElementById("label-year").classList.remove("label--invalid");
     } catch {
-      document.getElementById("day-error").classList.toggle("error--invalid");
-      document.getElementById("day").classList.toggle("input--invalid");
-      document.getElementById("month-error").classList.toggle("error--invalid");
-      document.getElementById("month").classList.toggle("input--invalid");
-      document.getElementById("year-error").classList.toggle("error--invalid");
-      document.getElementById("year").classList.toggle("input--invalid");
-      document.getElementById("label-day").classList.toggle("label--invalid");
-      document.getElementById("label-month").classList.toggle("label--invalid");
-      document.getElementById("label-year").classList.toggle("label--invalid");
+      document.getElementById("day-error").classList.add("error--invalid");
+      document.getElementById("day").classList.add("input--invalid");
+      document.getElementById("month-error").classList.add("error--invalid");
+      document.getElementById("month").classList.add("input--invalid");
+      document.getElementById("year-error").classList.add("error--invalid");
+      document.getElementById("year").classList.add("input--invalid");
+      document.getElementById("label-day").classList.add("label--invalid");
+      document.getElementById("label-month").classList.add("label--invalid");
+      document.getElementById("label-year").classList.add("label--invalid");
+
+      document.getElementById("span--days").innerText = "--";
+      document.getElementById("span--months").innerText = "--";
+      document.getElementById("span--year").innerText = "--";
     }
   }
 });
